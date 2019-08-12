@@ -1,48 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Dialog from './component/Dialog';
-import {createElement,render} from './2-jsx'
-let root=document.getElementById('root');
-ReactDOM.render(<div>
-  {/* 注释：调取组件，只需要把组件当做一个标签调取 (单和双有区别)*/}
-  {/* 数字要用大括号包起来 */}
-  <Dialog con='lin'/>
-  <Dialog con='ji' lx={2}>
-      <span></span>
-  </Dialog>
-</div>,root)
+/* 我们一般把程序中的公用样式放到index中导入这样在其他组件也可以使用
+（webpack会把所有的组件最后都编译到一起，index是入口 
+2.导入boostrap，需要导入的是不经过压缩处理的文件，否则无法编译（真实项目zhong
+boostrap已经是过去的事，一般中使用的都是ant来做
+*/
 
+import 'bootstrap/dist/css/bootstrap.css';
+import Dialog from './component/Dialog-1';
+ ReactDOM.render(<main>
+     <Dialog content='hehe'/>
+     <Dialog type={2} content='我的js很溜'/>
+     <Dialog type='请登录' content={
+         <div>
+         <input type="text" className="form-control" placeholder="Username" />
+             <br/>
+             <input type="text" className="form-control" placeholder="Password" />
+       
+     
+     </div>
+     }>
+      <button type='button' className='btn btn-success'>登录</button>
+      <button type='button' className='btn btn-danger'>取消</button>
+     </Dialog>
+ </main>,document.getElementById('root'))
 
-
-
-
-
-
-
-
-
-
-
-// import {createElement, render} from './2-jsx';
-// import {createElement,render} from './2-jsx';
-// let root=document.getElementById('root');
-let objJSX = createElement(
-    'div',
-    {id: 'box', className: 'box', style: {color: 'red'}},
-    createElement(
-        'h2',
-        {className: 'title'},
-        '\u7CFB\u7EDF\u63D0\u793A'
-    ),
-    createElement(
-        'div',
-        {className: 'content'},
-        '\u6E29\u99A8\u63D0\u793A\uFF1A\u8BED\u6CD5\u9519\u8BEF\uFF01'
-    ),
-    '\u672C\u64CD\u4F5C\u5C31\u662F\u4E00\u4E2A\u6D4B\u8BD5\uFF01'
-);
-console.log(objJSX);
-console.log(render(objJSX,root)) 
 
 
 
