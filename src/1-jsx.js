@@ -10,6 +10,7 @@
  *
  * 
  */
+let root=document.getElementById('root')
 
  function createElement(type, props, ...children) {
     props = props || {};
@@ -24,13 +25,11 @@
     // obj = {...obj, type, props};//=>{type:type,props:props}
     obj = {...obj, type, props: {...props, children}};
     //=>把REF和KEY提取出来(并且删除PROPS中的属性)
-    'key' in obj.props ? (obj.key = obj.props.key, obj.props.key = undefined) : null;
-    'ref' in obj.props ? (obj.ref = obj.props.ref, obj.props.ref = undefined) : null;
-     console.log(obj.key,obj.ref)
     return obj;
 }
 let objJXS=createElement('h1',{id:'titleBox',classNmae:'title',style: {color:'red'},ref:'AA',key:'12'},
  '\u73E0\u5CF0\u57F9\u8BAD')
+//  console.log(objJXS)
 // console.log(encodeURIComponent('林计友'));
 /* 
  *
@@ -49,9 +48,8 @@ let objJXS=createElement('h1',{id:'titleBox',classNmae:'title',style: {color:'re
  * 
  */
  function render(objJXS,Container,callBack){
-     console.log(Container)
          let {type,props}=objJXS||{};
-         newElement=document.createElement(type); 
+        let newElement=document.createElement(type); 
          for(let attr in props){
              if(!props.hasOwnProperty(attr)) break;//不是私有的直接结束遍历
              if(!props[attr]) continue;//=>如果当前属性没有值，直接不处理即可
@@ -90,3 +88,7 @@ let objJXS=createElement('h1',{id:'titleBox',classNmae:'title',style: {color:'re
  render(objJXS,root,()=>{
         console.log('ok')
  });
+ export{
+     createElement,
+     render
+ }
