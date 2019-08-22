@@ -41,9 +41,9 @@ class Vote extends React.Component{
     }
     //=>投票：支持
     support=ev=>{
-        /* 
-         refs:是react中专门提供通过操作dom来实现需求的方式，它是以个对象，存储了当前组件所有设置
-         ref属性的元素（元素属性值是啥，refs存储的元素属性名就是啥）
+        /** 
+         *refs:是react中专门提供通过操作dom来实现需求的方式，它是以个对象，存储了当前组件所有设置
+         *ref属性的元素（元素属性值是啥，refs存储的元素属性名就是啥）
         */
     //   console.log(this.refs)
      let {spanLeft}=this.refs;

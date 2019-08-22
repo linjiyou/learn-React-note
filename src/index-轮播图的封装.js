@@ -6,14 +6,16 @@ import Banner from'./component/Banner';
 import './static/css/reset.min.css';
 
 
-/** 
+/** #region
  * data :轮播图需要绑定的数据
  *  interval：自动轮播的时间
  *  step：默认图片展示的索引
  *  speed： 每一张图片运动的时间
  * 
 */
-// let imgData=[{
+/*  */
+//#region
+//  let imgData=[{
 //     id:1,
 //     title:'',
 //     pic:require('./static/images/1.jpg')
@@ -35,6 +37,8 @@ import './static/css/reset.min.css';
 //     pic:'./static/images/5.jpg'
 // }
 // ];
+// #endregion
+
  let imgData=[];
  for(let i=1;i<=5;i++){
     imgData.push({

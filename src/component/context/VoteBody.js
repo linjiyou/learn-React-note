@@ -3,35 +3,23 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 
-
 export default class Vote extends React.Component{
-    
+    static contextTypes={
+       n:propTypes.number,
+       m:propTypes.number
+    }
     constructor(props,context){
         super(props);
-        // init state
-      
-        let  {n,m}=this.props.store.getState().vote;
-          this.state={n,m};
+    
     }
-      componentDidMount(){
-          
-          this.props.store.subscribe(()=>{
-              let {n,m}=this.props.store.getState().vote;
-              this.setState({
-                  n,
-                  m
-              });
-             });
-            //  unsubscribe();把当前追加的方法移除，解除绑定的方式
-      }
     render(){
-        
-      let {n,m}=this.state,
+        console.log(this.context)
+      let {n,m}=this.context,
           rate=(n/(n+m)*100);
           if(isNaN(rate)){
               rate=0;
           }
-   
+
        return <div className={'panel-body'}>
             支持人数：<span >{n}</span>
             <br/>

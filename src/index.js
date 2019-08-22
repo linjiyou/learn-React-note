@@ -1,29 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactSwipe from 'react-swipe';
+import ReactDOM,{render} from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import propTypes from 'prop-types';
 import './static/css/reset.min.css';
-import Vote from './component/Vote-1';
+import {createStore} from 'redux';
+import VoteBase from './component-1/vote/VoteBase';
+import VoteHandle from './component-1/vote/VoteHandle';
+import store from './store-1';
+import {Provider,connect} from 'react-redux';
 
 
 
-// export default class Vote extends React.Component{
-//     constructor(props){
-//         super(prosp);
-//     }
-//     render(){
-//        return <section>
-
-//         </section>
-//     }
-// }
-ReactDOM.render(
-  <main>
-    {/* title:标题 count：初始支持反对人数 */}
-    <Vote title={'英格兰对战巴拿马，’韩丽凯隐必胜！'} count={{
-      n:100,
-      m:78
-    }}/>
-  </main>
-,document.getElementById('root'))
+render(
+    <Provider store={store}>
+     <section className='panel panel-default' style={{width:'50%',margin:'20px auto'}}>
+     <VoteBase store={store}/>
+     <VoteHandle store={store}/>
+    </section>
+    </Provider>
+    ,document.getElementById('root'))
